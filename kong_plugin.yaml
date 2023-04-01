@@ -1,0 +1,25 @@
+image:
+  repository: kong-with-plugin-image
+  tag: "latest"
+
+env:
+  log_level: debug
+  pluginserver_names: go-hello
+  pluginserver_go_hello_socket: /usr/local/kong/go-hello.socket
+  pluginserver_go_hello_start_cmd: /usr/local/bin/go-hello
+  pluginserver_go_hello_query_cmd: /usr/local/bin/go-hello -dump
+  plugins: bundled,go-hello
+
+admin:
+  enabled: true
+
+proxy:
+  enabled: true
+  type: NodePort
+
+ingressController:
+  enabled: false
+
+# service config:
+# --set-file dblessConfig.config=/path/to/kong.yaml
+# helm upgrade kong ./kong/ --values kong_plugin.yaml --set-file dblessConfig.config=./kong.yaml

@@ -1,0 +1,12 @@
+_format_version: "1.1"
+services:
+  - name: echo-service
+    url: http://echo-echo-server
+    routes:
+    - name: example-route
+      paths:
+      - "/echo"
+    plugins:
+    - name: go-hello
+      config:
+        message: "duck duck quack quack"
